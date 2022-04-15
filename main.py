@@ -1,22 +1,23 @@
-url = "https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dollar&quantidade=100"
-#print(url)
+#url = "https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dollar&quantidade=100"
+url = " "
 
-#url = 'bytebank.com/cambio?moedaOrigem=real'
+# Sanitização da URL
+#url = url.replace(" ", "")
 
+# Usando sanitização com o método strip
+url = url.strip()
 
-#separa base e os parametros
+# Validação da URL
+if url == "":
+    raise ValueError("A url está vazia")
+
+# Separa base e os parametros
 indice_interrogacao = url.find('?')
-print('Esse é o ínice: {}'.format(indice_interrogacao))
 url_base = url[0:indice_interrogacao]
-print(url_base)
 url_parametros = url[indice_interrogacao +1:]
-print(url_parametros)
-
-
-
 
 # Busca o valor de um parametro
-parametro_busca = 'moedaOrigem'
+parametro_busca = 'moedaDestino'
 indice_parametro = url_parametros.find(parametro_busca)
 indice_valor = indice_parametro + len(parametro_busca) + 1
 indice_e_comercial = url_parametros.find('&', indice_valor)
