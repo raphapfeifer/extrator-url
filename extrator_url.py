@@ -1,3 +1,5 @@
+from validador_url import ValidadorUrl
+
 class ExtratorURL:
     def __init__(self, url):
         self.url = self.santiza_url(url)
@@ -12,6 +14,11 @@ class ExtratorURL:
     def valida_url(self):
         if not self.url:
             raise ValueError("A URL está vazia")
+
+        validador_url = ValidadorUrl(self.url)
+        if not validador_url.valida():
+            raise ValueError("A url não é válida")
+
 
     def get_url_base(self):
         indice_interrogacao = self.url.find('?')
