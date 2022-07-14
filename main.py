@@ -7,5 +7,7 @@ valor_quantidade = extrator_url.get_valor_parametro("quantidade")
 
 print("O tamanho da url: ", len(extrator_url))
 
+print(extrator_url)
+
 
 print(valor_quantidade)
